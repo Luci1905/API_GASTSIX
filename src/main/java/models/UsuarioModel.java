@@ -1,16 +1,19 @@
-package models;
+package com.gastsix.apigastsix;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.UUID;
 @Getter
 @Setter
+@Entity
 @Table(name = "tb_usuarios")
-public class UsuarioModel implements Serializable {
+public class UsuarioModel implements Serializable, UserDetails {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -28,4 +31,10 @@ public class UsuarioModel implements Serializable {
     private String dataAdm;
     private String senha;
     private String confirmarSenha;
+
+    @Override
+    public Collection<? estends GrantedAuthority> getAuthorities() {
+        if (this.tipo_usuario == tipoModel.ADMIN){}
+
+    }
 }
